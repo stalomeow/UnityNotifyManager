@@ -6,15 +6,13 @@ using System.ComponentModel;
 public struct NotifyGroup
 {
     [EditorBrowsable(EditorBrowsableState.Never)] public uint _groupId;
-    [EditorBrowsable(EditorBrowsableState.Never)] public int _isValid;
 
     internal NotifyGroup(uint groupId)
     {
         _groupId = groupId;
-        _isValid = 1;
     }
 
-    public bool IsValid => _isValid != 0;
+    public bool IsValid => _groupId != 0u;
 
     private void ThrowIfGroupIsInvalid()
     {
@@ -28,7 +26,7 @@ public struct NotifyGroup
     {
         ThrowIfGroupIsInvalid();
         NotifyManager.RemoveGroup(_groupId);
-        _isValid = 0;
+        _groupId = 0u;
     }
 
     public string Name

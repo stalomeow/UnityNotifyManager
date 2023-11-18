@@ -25,7 +25,7 @@ public static class NotifyManager
     private static NotifyDelegateLink _freelist = null;
 
     private static readonly Stack<uint> _recycledGroupIdStack = new();
-    private static uint _nextGroupId = 0u;
+    private static uint _nextGroupId = 1u; // 0u is invalid!!!
 
     private static readonly Dictionary<Type, object> _emptyNotifyCache = new();
 
